@@ -139,8 +139,12 @@
               dataObj.requiredValues.every(containsText)) {
 
             var n = newUrl.split('/').length -1;
-            if(n <= 5){
-                pendingUrls.push(newUrl);
+            if(n <= 4){
+                if(newUrl.match(/www.navitime.co.jp\/classified/) !== null || newUrl.match(/www.navitime.co.jp\/poi\?/) !== null ){
+                    pendingUrls.push(newUrl);
+                }else{
+                    skippedUrls.push(newUrl);
+                }
             }else{
                 skippedUrls.push(newUrl);
             }
