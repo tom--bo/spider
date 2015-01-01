@@ -89,7 +89,8 @@
       var status = this.status().currentHTTPStatus;
 
       // Log url
-      this.echo(this.colorizer.format(status, helpers.statusColor(status)) + ' ' + url);
+      // this.echo(this.colorizer.format(status, helpers.statusColor(status)) + ' ' + url);
+      this.echo(url);
 
       // Instantiate link object for log
       var link = {
@@ -103,7 +104,10 @@
 
       // ##################  Process Links on Page  #################
 
-      var baseUrl = this.getGlobal('location').origin;
+      // var baseUrl = this.getGlobal('location').origin;
+      // baseの取得変更フルパスを取得
+      // console.log("loc:::" + this.getCurrentUrl());
+      var baseUrl = this.getCurrentUrl();
 
       // Find links on the current page
       var localLinks = this.evaluate(function() {
@@ -142,6 +146,7 @@
             skippedUrls.push(newUrl);
 
             casper.log('Skipping ' + newUrl, 'debug');
+            // console.log('Skipping ' + newUrl, 'debug');
 
             // add to counted skipped links
             dataObj.skippedLinksCount++;
