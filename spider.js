@@ -138,7 +138,13 @@
           if (!dataObj.skippedValues.some(containsText) &&
               dataObj.requiredValues.every(containsText)) {
 
-            pendingUrls.push(newUrl);
+            var n = newUrl.split('/').length -1;
+            if(n <= 5){
+                pendingUrls.push(newUrl);
+            }else{
+                skippedUrls.push(newUrl);
+            }
+
 
           } else {
 
